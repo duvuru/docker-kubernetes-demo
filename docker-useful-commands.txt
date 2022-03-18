@@ -1,0 +1,74 @@
+1. To pull docker image from docker hub
+
+docker pull <imagename:tagname> //Eg: docker pull nginx, if you don't specify tagname then it will fetch latest
+
+2. To run/create container 
+
+docker run <imagename:tagname> //Eg: docker run nginx:latest
+
+3. To stop container
+
+docker stop <containerid> / <container name> // Eg: docker stop 1c6437b5692f or docker stop thirsty_saha
+
+4. To start container
+
+docker start <containerid> / <container name> // Eg: docker start 1c6437b5692f or docker start thirsty_saha
+
+5. To remove stopped container
+
+docker rm <containerid> / <container name> // Eg: docker rm 1c6437b5692f or docker rm thirsty_saha
+
+6. To force remove running container
+
+docker rm -f <containerid> / <container name> // Eg: docker rm -f 1c6437b5692f or docker rm -f thirsty_saha
+
+7. To map the host port to container port
+
+docker run -p <hostport>:<containerport> <imagename:tagname>  // Eg: docker run -p 8080:80  nginx:latest
+
+8. To map multiple host ports to container port
+
+docker run -p <hostport>:<containerport> -p <hostport>:<containerport> <imagename:tagname>  // Eg: docker run -p 8080:80  -p 3000:80 nginx:latest
+
+9. To run container in detach mode
+
+docker run -d <imagename:tagname> //Eg: docker run -d nginx:latest
+
+10. To know the List of running containers
+
+docker ps
+
+11. To know the List of all containers
+
+docker ps -a
+
+12. To know only the containerid for all the containers
+
+docker ps -aq
+
+13. To stop all running containers
+
+docker stop $(docker ps -aq)
+
+14. To name a container
+
+docker run --name <name of the container> -d <imagename:tagname> // Eg: docker run --name testname -d nginx:latest
+
+15. To format the output of the console 
+
+docker ps --format="Id\t{{.ID }}\nImage\t{{.Image}}\nNames\t{{.Names}}\nStatus\t{{.Status}}\nPorts\t{{.Ports}}\nCreated\t{{.CreatedAt}}\n"
+
+16. To mount the volumes between host and container in readonly mode
+
+//ro stands for readonly
+docker run --name website -v <hostfolder>:<containerfolder>:ro -d -p 8080:80 nginx:latest //Eg: docker run --name website -v C:\Users\sonu\website:/usr/share/nginx/html/:ro -d -p 8080:80 nginx:latest
+
+16. To mount the volumes between host and container in write mode
+
+docker run --name website -v <hostfolder>:<containerfolder> -d -p 8080:80 nginx:latest //Eg: docker run --name website -v C:\Users\sonu\website:/usr/share/nginx/html -d -p 8080:80 nginx:latest
+
+18. To run container in interactive mode
+
+docker exec -it <containername> bash
+
+18. 
