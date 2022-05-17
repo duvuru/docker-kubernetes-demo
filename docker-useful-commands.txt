@@ -71,4 +71,14 @@ docker run --name website -v <hostfolder>:<containerfolder> -d -p 8080:80 nginx:
 
 docker exec -it <containername> bash
 
-18. 
+18. To share the volumes between the containers
+
+docker run --name <nameofthecontainer> --volumes-from <containername> -d -p 8081:80 nginx:latest
+
+19. To tag the images
+
+docker tag <local/source-imagename>:tag <remote/destination-imagename>:tag //Eg: docker tag user-service-api:latest duvuru/user-service-api:latest
+
+20 To push the image to the docker registry
+
+docker push <dockerid>/<repositoryname>:<tag>  // Eg: docker push duvuru/user-service-api:latest
